@@ -10,12 +10,12 @@ if [ -z "$1" ]; then
     exit 1
 fi
 echo "I'm gonna download the database from" $SITE
-terminus auth login
-terminus site backups create --element=database --site=$SITE --env=dev
-echo "Downloading to ~/Downloads"
-OUTPUT=$(terminus site backups get --element=database --to=~/Downloads --latest --site=$SITE --env=dev | tail -1)
-echo "Now I need to unzip" $OUTPUT
-gunzip < $OUTPUT | drush sqlc
+terminus auth:login
+terminus backup:create --element=database $SITE.dev
+echo "Downloading to $HOME/Downloads"
+terminus backup:get --element=database --to=$HOME/Downloads/mtc-vital-signs.sql.gz $SITE.dev
+echo "Now I need to unzip $HOME/Downloads/mtc-vital-signs.sql.gz"
+gunzip < $HOME/Downloads/mtc-vital-signs.sql.gz | drush sqlc
 echo "All set!  Now a little housekeeping."
 drush updb -y
 drush cc all
