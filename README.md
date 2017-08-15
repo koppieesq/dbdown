@@ -21,4 +21,5 @@ Simple tool to download a Drupal database from your Pantheon project to your loc
 
 1. Open a terminal and cd to your Drupal project, eg. `/var/www`
 2. Type the dbdown command + the machine name of your Pantheon project.  Eg.: `dbdown demo-proj`
-3. Use your saved time to do something personally rewarding, like knit a pair of socks.
+3. *Optional:* Add a second argument to specify environment.  Eg.: `dbdown demo-proj test`
+4. Use your saved time to do something personally rewarding, like learn a musical instrument.
