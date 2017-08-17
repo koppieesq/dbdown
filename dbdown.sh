@@ -21,7 +21,7 @@ echo "\033[1;31m You should run this command from your local Drupal environment.
 
 echo "I'm gonna download the database from" $SITE
 terminus auth:login
-terminus backup:create --element=database $SITE.dev
+terminus backup:create --element=database $SITE.$ENV
 echo "Downloading to $HOME/Downloads"
 terminus backup:get --element=database --to=$OUTPUT $SITE.$ENV
 echo "Now I need to unzip $OUTPUT"
